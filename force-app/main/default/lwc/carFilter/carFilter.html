@@ -1,0 +1,62 @@
+<template>
+    <lightning-card title="Filters" icon-name="standard:filter">
+        <div class="slds-var-m-horizontal_medium">
+            <lightning-input
+                type="search"
+                label="Search Key"
+                value={filters.searchKey}
+                onchange={searchKeyHandler}
+            ></lightning-input>
+
+            <section class="slider_section">
+                <lightning-slider
+                    label="Max Price"
+                    step="100"
+                    min="0"
+                    max="999999"
+                    value={filters.maxPrice}
+                    onchange={maxPriceHandler}
+                ></lightning-slider>
+            </section>
+
+            <section>
+                <h2><strong>Category</strong></h2>
+                <template if:true={categoryPicklist.error}>
+                    <div>{categoryError}</div>
+                </template>
+                <template if:true={categoryPicklist.data}>
+                    <template for:each={categoryPicklist.data.values} for:item="category">
+                        <lightning-input key={category.value}
+                            label={category.label}
+                            data-name="category"
+                            data-value={category.value}
+                            type="checkbox"
+                            checked
+                            onchange={checkboxHandler}
+                        ></lightning-input>
+                    </template>
+                </template>
+            </section>
+
+            <section>
+                <h2><strong>Make</strong></h2>
+                <template if:true={categoryPicklist.error}>
+                    <div>{makeTypeError}</div>
+                </template>
+                <template if:true={makeTypePicklist.data}>
+                    <template for:each={makeTypePicklist.data.values} for:item="makeType">
+                        <lightning-input key={makeType.value}
+                            label={makeType.label}
+                            data-name="makeType"
+                            data-value={makeType.value}
+                            type="checkbox"
+                            checked
+                            onchange={checkboxHandler}
+                        ></lightning-input>
+                    </template>
+                </template>
+            </section>
+            
+        </div>
+    </lightning-card>
+</template>
