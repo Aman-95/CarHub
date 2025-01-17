@@ -1,5 +1,17 @@
 <template>
-    <lightning-card title="Car Card" icon-name="standard:apex_plugin">
-
+    <lightning-card title={carName} icon-name="standard:apex_plugin">
+        <div class="slds-p-horizontal_medium">
+            <img src={carPictureUrl} alt={carName}/>
+            <lightning-record-view-form record-id={recordId} onload={handleLoad} object-api-name={car} density="compact" class="slds-var-m-around_medium">
+                <lightning-output-field field-name={category}></lightning-output-field>
+                <lightning-output-field field-name={make}></lightning-output-field>
+                <lightning-output-field field-name={msrp}></lightning-output-field>
+                <lightning-output-field field-name={recordId}></lightning-output-field>
+                <section>Other Features</section>
+                <lightning-output-field field-name={fuleType}></lightning-output-field>
+                <lightning-output-field field-name={control}></lightning-output-field>
+                <lightning-output-field field-name={seats}></lightning-output-field>
+            </lightning-record-view-form>
+        </div>
     </lightning-card>
 </template>
